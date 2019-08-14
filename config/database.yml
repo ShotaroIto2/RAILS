@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host: db
+
+development:
+  <<: *default
+  database: docker_rails_development
+
+test:
+  <<: *default
+  database: docker_rails_test
+
+production:
+  <<: *default
+  database: docker_rails_production
+  username: docker_rails
+  password: <%= ENV['DOCKER_RAILS_DATABASE_PASSWORD'] %>
